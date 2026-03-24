@@ -8,41 +8,41 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#0d0d0d;
-  --surface:#161616;
-  --card:#1e1e1e;
-  --card2:#252525;
-  --orange:#f46c1a;
-  --orange-dim:rgba(244,108,26,.15);
-  --orange-glow:rgba(244,108,26,.08);
-  --text:#f5f5f5;
-  --muted:#888;
-  --muted2:#555;
-  --border:rgba(255,255,255,.06);
-  --border-strong:rgba(255,255,255,.12);
+  --bg:#0d0d0d;
+  --surface:#161616;
+  --card:#1e1e1e;
+  --card2:#252525;
+  --orange:#f46c1a;
+  --orange-dim:rgba(244,108,26,.15);
+  --orange-glow:rgba(244,108,26,.08);
+  --text:#f5f5f5;
+  --muted:#888;
+  --muted2:#555;
+  --border:rgba(255,255,255,.06);
+  --border-strong:rgba(255,255,255,.12);
 }
 html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif}
 body{display:grid;grid-template-columns:1fr 360px;grid-template-rows:72px 1fr 52px;height:100vh}
 
 /* ─── TOPBAR ─── */
 .topbar{
-  grid-column:1/-1;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 40px;
-  background:var(--surface);
-  border-bottom:1px solid var(--border);
-  position:relative;
+  grid-column:1/-1;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+  position:relative;
 }
 .topbar::after{
-  content:'';position:absolute;bottom:0;left:0;
-  width:100%;height:2px;
-  background:linear-gradient(90deg,var(--orange),transparent 60%);
+  content:'';position:absolute;bottom:0;left:0;
+  width:100%;height:2px;
+  background:linear-gradient(90deg,var(--orange),transparent 60%);
 }
 .topbar-left{display:flex;align-items:center;gap:20px}
 .logo-wrap{display:flex;align-items:center;gap:10px}
 .logo-icon{
-  width:32px;height:32px;background:var(--orange);border-radius:6px;
-  display:flex;align-items:center;justify-content:center;
+  width:32px;height:32px;background:var(--orange);border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
 }
 .logo-icon svg{width:18px;height:18px;fill:#fff}
 .logo-text{font-family:'Montserrat',sans-serif;font-size:18px;font-weight:800;letter-spacing:-.5px}
@@ -52,11 +52,11 @@ body{display:grid;grid-template-columns:1fr 360px;grid-template-rows:72px 1fr 52
 
 .topbar-right{display:flex;align-items:center;gap:28px}
 .live-badge{
-  display:flex;align-items:center;gap:7px;
-  background:var(--orange-dim);border:1px solid rgba(244,108,26,.3);
-  padding:5px 12px;border-radius:20px;
-  font-size:11px;font-weight:600;color:var(--orange);
-  letter-spacing:.5px;text-transform:uppercase;
+  display:flex;align-items:center;gap:7px;
+  background:var(--orange-dim);border:1px solid rgba(244,108,26,.3);
+  padding:5px 12px;border-radius:20px;
+  font-size:11px;font-weight:600;color:var(--orange);
+  letter-spacing:.5px;text-transform:uppercase;
 }
 .live-dot{width:7px;height:7px;border-radius:50%;background:var(--orange);animation:blink 1.4s ease infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
@@ -71,9 +71,9 @@ body{display:grid;grid-template-columns:1fr 360px;grid-template-rows:72px 1fr 52
 .month-title{font-family:'Montserrat',sans-serif;font-size:28px;font-weight:900;letter-spacing:-1px;text-transform:capitalize;flex:1}
 .month-title em{color:var(--orange);font-style:normal;font-size:16px;font-weight:500;margin-left:10px;opacity:.8}
 .nav-btn{
-  width:34px;height:34px;border-radius:7px;border:1px solid var(--border-strong);
-  background:var(--card);color:var(--muted);cursor:pointer;font-size:14px;
-  display:flex;align-items:center;justify-content:center;transition:all .15s;
+  width:34px;height:34px;border-radius:7px;border:1px solid var(--border-strong);
+  background:var(--card);color:var(--muted);cursor:pointer;font-size:14px;
+  display:flex;align-items:center;justify-content:center;transition:all .15s;
 }
 .nav-btn:hover{background:var(--orange);color:#fff;border-color:var(--orange)}
 
@@ -84,18 +84,18 @@ body{display:grid;grid-template-columns:1fr 360px;grid-template-rows:72px 1fr 52
 .days-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;flex:1}
 
 .day{
-  background:var(--card);border:1px solid var(--border);border-radius:8px;
-  padding:8px 9px;min-height:66px;overflow:hidden;position:relative;
-  transition:border-color .15s,transform .12s;
+  background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:8px 9px;min-height:66px;overflow:hidden;position:relative;
+  transition:border-color .15s,transform .12s;
 }
 .day.other{opacity:.2}
 .day.weekend-day{background:#191919}
 .day.today{
-  border-color:var(--orange)!important;
-  background:var(--orange-glow);
+  border-color:var(--orange)!important;
+  background:var(--orange-glow);
 }
 .day.today::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--orange);border-radius:8px 8px 0 0;
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--orange);border-radius:8px 8px 0 0;
 }
 .day.has-ev{border-color:rgba(244,108,26,.25)}
 .day:hover:not(.other){transform:scale(1.03);border-color:rgba(244,108,26,.5);z-index:2}
@@ -112,8 +112,8 @@ body{display:grid;grid-template-columns:1fr 360px;grid-template-rows:72px 1fr 52
 
 /* ─── SIDEBAR ─── */
 .sidebar{
-  background:var(--surface);border-left:1px solid var(--border);
-  display:flex;flex-direction:column;overflow:hidden;
+  background:var(--surface);border-left:1px solid var(--border);
+  display:flex;flex-direction:column;overflow:hidden;
 }
 .sb-sec{padding:18px 20px;border-bottom:1px solid var(--border)}
 .sb-title{font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted2);margin-bottom:12px}
@@ -130,15 +130,15 @@ body{display:grid;grid-template-columns:1fr 360px;grid-template-rows:72px 1fr 52
 .ev-scroll::-webkit-scrollbar{width:2px}
 .ev-scroll::-webkit-scrollbar-thumb{background:var(--orange-dim)}
 .ev-card{
-  display:flex;gap:10px;padding:10px 12px;
-  background:var(--card);border:1px solid var(--border);border-radius:8px;
-  cursor:pointer;transition:border-color .15s;
+  display:flex;gap:10px;padding:10px 12px;
+  background:var(--card);border:1px solid var(--border);border-radius:8px;
+  cursor:pointer;transition:border-color .15s;
 }
 .ev-card:hover,.ev-card.top{border-color:rgba(244,108,26,.4)}
 .ev-card.top{background:var(--orange-glow)}
 .ev-date{
-  min-width:38px;background:var(--card2);border-radius:6px;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4px;
+  min-width:38px;background:var(--card2);border-radius:6px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4px;
 }
 .ev-day{font-family:'Montserrat',sans-serif;font-size:18px;font-weight:900;line-height:1;color:var(--orange)}
 .ev-mon{font-size:9px;color:var(--muted);text-transform:uppercase;font-weight:600;letter-spacing:.5px}
@@ -154,23 +154,23 @@ body{display:grid;grid-template-columns:1fr 360px;grid-template-rows:72px 1fr 52
 
 /* ─── TICKER ─── */
 .ticker{
-  grid-column:1/-1;
-  background:#111;border-top:1px solid var(--border);
-  display:flex;align-items:center;gap:0;overflow:hidden;
+  grid-column:1/-1;
+  background:#111;border-top:1px solid var(--border);
+  display:flex;align-items:center;gap:0;overflow:hidden;
 }
 .tk-label{
-  flex-shrink:0;padding:0 18px;height:100%;
-  display:flex;align-items:center;
-  background:var(--orange);
-  font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;
-  color:#fff;letter-spacing:2px;text-transform:uppercase;
-  gap:7px;white-space:nowrap;
+  flex-shrink:0;padding:0 18px;height:100%;
+  display:flex;align-items:center;
+  background:var(--orange);
+  font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;
+  color:#fff;letter-spacing:2px;text-transform:uppercase;
+  gap:7px;white-space:nowrap;
 }
 .tk-track{overflow:hidden;flex:1;padding:0 16px}
 .tk-items{
-  display:inline-flex;gap:50px;
-  animation:scroll 35s linear infinite;
-  white-space:nowrap;
+  display:inline-flex;gap:50px;
+  animation:scroll 35s linear infinite;
+  white-space:nowrap;
 }
 @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .tk-item{font-size:12px;color:var(--muted)}
@@ -179,18 +179,18 @@ body{display:grid;grid-template-columns:1fr 360px;grid-template-rows:72px 1fr 52
 
 /* ─── MODAL ─── */
 .overlay{
-  display:none;position:fixed;inset:0;z-index:200;
-  background:rgba(0,0,0,.8);align-items:center;justify-content:center;
+  display:none;position:fixed;inset:0;z-index:200;
+  background:rgba(0,0,0,.8);align-items:center;justify-content:center;
 }
 .overlay.on{display:flex}
 .modal{
-  background:var(--card);border:1px solid var(--border-strong);border-radius:14px;
-  padding:32px;max-width:420px;width:90%;position:relative;
+  background:var(--card);border:1px solid var(--border-strong);border-radius:14px;
+  padding:32px;max-width:420px;width:90%;position:relative;
 }
 .modal::before{content:'';position:absolute;top:0;left:24px;right:24px;height:2px;background:var(--orange);border-radius:0 0 4px 4px}
 .modal-close{
-  position:absolute;top:14px;right:16px;background:none;border:none;
-  color:var(--muted);font-size:20px;cursor:pointer;line-height:1;
+  position:absolute;top:14px;right:16px;background:none;border:none;
+  color:var(--muted);font-size:20px;cursor:pointer;line-height:1;
 }
 .modal-close:hover{color:var(--text)}
 .modal-tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 9px;border-radius:4px;margin-bottom:12px}
@@ -204,86 +204,86 @@ body{display:grid;grid-template-columns:1fr 360px;grid-template-rows:72px 1fr 52
 
 <!-- TOPBAR -->
 <header class="topbar">
-  <div class="topbar-left">
-    <div class="logo-wrap">
-      <div class="logo-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-      </div>
-      <div class="logo-text">live<span>SEO</span></div>
-    </div>
-    <div class="divider"></div>
-    <div class="cal-label">Calendário Endomarketing</div>
-  </div>
-  <div class="topbar-right">
-    <div class="live-badge"><div class="live-dot"></div>Ao Vivo</div>
-    <div class="clock-block">
-      <div class="clock" id="clock">--:--:--</div>
-      <div class="clock-date" id="cdate">--</div>
-    </div>
-  </div>
+  <div class="topbar-left">
+    <div class="logo-wrap">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+      </div>
+      <div class="logo-text">live<span>SEO</span></div>
+    </div>
+    <div class="divider"></div>
+    <div class="cal-label">Calendário Endomarketing</div>
+  </div>
+  <div class="topbar-right">
+    <div class="live-badge"><div class="live-dot"></div>Ao Vivo</div>
+    <div class="clock-block">
+      <div class="clock" id="clock">--:--:--</div>
+      <div class="clock-date" id="cdate">--</div>
+    </div>
+  </div>
 </header>
 
 <!-- MAIN CALENDAR -->
 <main class="main">
-  <div class="month-nav">
-    <button class="nav-btn" id="prev">&#8592;</button>
-    <div class="month-title" id="mlabel"></div>
-    <button class="nav-btn" id="next">&#8594;</button>
-  </div>
-  <div class="weekdays">
-    <div class="wd weekend">Dom</div><div class="wd">Seg</div><div class="wd">Ter</div>
-    <div class="wd">Qua</div><div class="wd">Qui</div><div class="wd">Sex</div>
-    <div class="wd weekend">Sáb</div>
-  </div>
-  <div class="days-grid" id="grid"></div>
+  <div class="month-nav">
+    <button class="nav-btn" id="prev">&#8592;</button>
+    <div class="month-title" id="mlabel"></div>
+    <button class="nav-btn" id="next">&#8594;</button>
+  </div>
+  <div class="weekdays">
+    <div class="wd weekend">Dom</div><div class="wd">Seg</div><div class="wd">Ter</div>
+    <div class="wd">Qua</div><div class="wd">Qui</div><div class="wd">Sex</div>
+    <div class="wd weekend">Sáb</div>
+  </div>
+  <div class="days-grid" id="grid"></div>
 </main>
 
 <!-- SIDEBAR -->
 <aside class="sidebar">
-  <div class="sb-sec">
-    <div class="sb-title">Progresso do Ano</div>
-    <div class="yp-row">
-      <span id="yplabel">2026</span>
-      <span id="yppct">—</span>
-    </div>
-    <div class="bar-bg"><div class="bar-fill" id="ypbar" style="width:0"></div></div>
-  </div>
+  <div class="sb-sec">
+    <div class="sb-title">Progresso do Ano</div>
+    <div class="yp-row">
+      <span id="yplabel">2026</span>
+      <span id="yppct">—</span>
+    </div>
+    <div class="bar-bg"><div class="bar-fill" id="ypbar" style="width:0"></div></div>
+  </div>
 
-  <div class="sb-sec" style="flex:1;overflow:hidden;display:flex;flex-direction:column;min-height:0">
-    <div class="sb-title">Próximas Datas</div>
-    <div class="ev-scroll" id="evlist"></div>
-  </div>
+  <div class="sb-sec" style="flex:1;overflow:hidden;display:flex;flex-direction:column;min-height:0">
+    <div class="sb-title">Próximas Datas</div>
+    <div class="ev-scroll" id="evlist"></div>
+  </div>
 
-  <div class="sb-sec">
-    <div class="sb-title">Categorias</div>
-    <div class="legend">
-      <div class="li"><div class="ld" style="background:#f08080"></div>Feriado Nacional</div>
-      <div class="li"><div class="ld" style="background:#60d9a0"></div>Data Comemorativa</div>
-      <div class="li"><div class="ld" style="background:#f4a068"></div>Ação Interna</div>
-      <div class="li"><div class="ld" style="background:#7ab0ff"></div>Campanha de Vendas</div>
-    </div>
-  </div>
+  <div class="sb-sec">
+    <div class="sb-title">Categorias</div>
+    <div class="legend">
+      <div class="li"><div class="ld" style="background:#f08080"></div>Feriado Nacional</div>
+      <div class="li"><div class="ld" style="background:#60d9a0"></div>Data Comemorativa</div>
+      <div class="li"><div class="ld" style="background:#f4a068"></div>Ação Interna</div>
+      <div class="li"><div class="ld" style="background:#7ab0ff"></div>Campanha de Vendas</div>
+    </div>
+  </div>
 </aside>
 
 <!-- TICKER -->
 <footer class="ticker">
-  <div class="tk-label">
-    <svg width="12" height="12" fill="white" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-    Destaques
-  </div>
-  <div class="tk-track"><div class="tk-items" id="tkitems"></div></div>
+  <div class="tk-label">
+    <svg width="12" height="12" fill="white" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+    Destaques
+  </div>
+  <div class="tk-track"><div class="tk-items" id="tkitems"></div></div>
 </footer>
 
 <!-- MODAL -->
 <div class="overlay" id="overlay">
-  <div class="modal">
-    <button class="modal-close" id="mclose">&times;</button>
-    <div class="modal-tag" id="mtag"></div>
-    <div class="modal-title" id="mtitle"></div>
-    <div class="modal-date" id="mdate"></div>
-    <div class="modal-sep"></div>
-    <div class="modal-desc" id="mdesc"></div>
-  </div>
+  <div class="modal">
+    <button class="modal-close" id="mclose">&times;</button>
+    <div class="modal-tag" id="mtag"></div>
+    <div class="modal-title" id="mtitle"></div>
+    <div class="modal-date" id="mdate"></div>
+    <div class="modal-sep"></div>
+    <div class="modal-desc" id="mdesc"></div>
+  </div>
 </div>
 
 <script>
@@ -291,36 +291,36 @@ body{display:grid;grid-template-columns:1fr 360px;grid-template-rows:72px 1fr 52
 // DATAS DE ENDOMARKETING — edite à vontade!
 // ══════════════════════════════════════════════
 const EV = [
-  {d:"2026-01-01",n:"Ano Novo",c:"f",desc:"Feriado nacional. Mensagem de boas-vindas e motivação para o novo ano."},
-  {d:"2026-02-16",n:"Carnaval",c:"f",desc:"Feriado nacional. Ação descontraída de integração."},
-  {d:"2026-02-17",n:"2ª de Carnaval",c:"f",desc:"Feriado nacional."},
-  {d:"2026-02-18",n:"3ª de Carnaval",c:"f",desc:"Feriado nacional."},
-  {d:"2026-03-08",n:"Dia da Mulher",c:"c",desc:"Celebrar e reconhecer as mulheres da empresa com evento especial."},
-  {d:"2026-04-03",n:"Sexta-feira Santa",c:"f",desc:"Feriado nacional."},
-  {d:"2026-04-05",n:"Páscoa",c:"f",desc:"Feriado nacional. Distribuição de chocolate e mensagem de recomeço."},
-  {d:"2026-04-07",n:"liveSEO Conecta - Gastão Vidigal",c:"i",desc:"Visita escolar dos alunos do Colégi Gastão Vidigal"},
-  {d:"2026-04-10",n:"Sextou 🐰",c:"i",desc:"local: liveSEO | horário: 18h."},
-  {d:"2026-04-16",n:"Noite de Jogos 🎮",c:"i",desc:"local: liveSEO | horário: 18h."},
-  {d:"2026-04-21",n:"Tiradentes",c:"f",desc:"Feriado nacional."},
-  {d:"2026-04-23",n:"Dia do Livro",c:"i",desc:"Indicação de leitura, troca de livros ou ação de biblioteca interna."},
-  {d:"2026-05-01",n:"Dia do Trabalho",c:"f",desc:"Feriado nacional. Mensagem da liderança reconhecendo colaboradores."},
-  {d:"2026-05-04",n:"Hub40 games - CS",c:"i",desc:"Confraternização interna do HUB40."},
-  {d:"2026-05-10",n:"Dia das Mães",c:"c",desc:"Homenagear mães colaboradoras com ação de endomarketing afetivo."},
-  {d:"2026-06-04",n:"Corpus Christi",c:"f",desc:"Feriado nacional."},
-  {d:"2026-06-13",n:"Festa Junina",c:"i",desc:"Confraternização interna com comida típica, brincadeiras e integração."},
-  {d:"2026-09-07",n:"Independência do Brasil",c:"f",desc:"Feriado nacional. Comunicação com orgulho e pertencimento."},
-  {d:"2026-09-15",n:"Dia do Cliente",c:"v",desc:"Campanha interna de cultura de atendimento e foco no cliente."},
-  {d:"2026-09-21",n:"Dia da Árvore",c:"i",desc:"Ação de ESG e sustentabilidade: plantio, reciclagem."},
-  {d:"2026-10-12",n:"N. Sra. Aparecida",c:"f",desc:"Feriado nacional."},
-  {d:"2026-10-31",n:"Halloween",c:"i",desc:"Ação descontraída com fantasia e integração entre equipes."},
-  {d:"2026-11-02",n:"Finados",c:"f",desc:"Feriado nacional."},
-  {d:"2026-11-15",n:"Proclamação da República",c:"f",desc:"Feriado nacional."},
-  {d:"2026-11-20",n:"Consciência Negra",c:"f",desc:"Feriado nacional. Ação de diversidade e inclusão com palestras."},
-  {d:"2026-11-27",n:"Black Friday",c:"v",desc:"Campanha de vendas e benefícios internos para colaboradores."},
-  {d:"2026-12-01",n:"Campanha de Natal",c:"i",desc:"Lançar campanha natalina: amigo secreto, decoração, comunicados."},
-  {d:"2026-12-24",n:"Véspera de Natal",c:"f",desc:"Mensagem de gratidão da liderança para toda a equipe."},
-  {d:"2026-12-25",n:"Natal",c:"f",desc:"Feriado nacional. Mensagem especial de fim de ano."},
-  {d:"2026-12-31",n:"Réveillon",c:"f",desc:"Encerramento do ano com balanço e expectativa para 2027."},
+  {d:"2026-01-01",n:"Ano Novo",c:"f",desc:"Feriado nacional. Mensagem de boas-vindas e motivação para o novo ano."},
+  {d:"2026-02-16",n:"Carnaval",c:"f",desc:"Feriado nacional. Ação descontraída de integração."},
+  {d:"2026-02-17",n:"2ª de Carnaval",c:"f",desc:"Feriado nacional."},
+  {d:"2026-02-18",n:"3ª de Carnaval",c:"f",desc:"Feriado nacional."},
+  {d:"2026-03-08",n:"Dia da Mulher",c:"c",desc:"Celebrar e reconhecer as mulheres da empresa com evento especial."},
+  {d:"2026-04-03",n:"Sexta-feira Santa",c:"f",desc:"Feriado nacional."},
+  {d:"2026-04-05",n:"Páscoa",c:"f",desc:"Feriado nacional. Distribuição de chocolate e mensagem de recomeço."},
+  {d:"2026-04-07",n:"liveSEO Conecta - Gastão Vidigal",c:"i",desc:"Visita escolar dos alunos do Colégi Gastão Vidigal"},
+  {d:"2026-04-10",n:"Sextou 🐰",c:"i",desc:"local: liveSEO | horário: 18h."},
+  {d:"2026-04-16",n:"Noite de Jogos 🎮",c:"i",desc:"local: liveSEO | horário: 18h."},
+  {d:"2026-04-21",n:"Tiradentes",c:"f",desc:"Feriado nacional."},
+  {d:"2026-04-23",n:"Dia do Livro",c:"i",desc:"Indicação de leitura, troca de livros ou ação de biblioteca interna."},
+  {d:"2026-05-01",n:"Dia do Trabalho",c:"f",desc:"Feriado nacional. Mensagem da liderança reconhecendo colaboradores."},
+  {d:"2026-05-04",n:"Hub40 games - CS",c:"i",desc:"Confraternização interna do HUB40."},
+  {d:"2026-05-10",n:"Dia das Mães",c:"c",desc:"Homenagear mães colaboradoras com ação de endomarketing afetivo."},
+  {d:"2026-06-04",n:"Corpus Christi",c:"f",desc:"Feriado nacional."},
+  {d:"2026-06-13",n:"Festa Junina",c:"i",desc:"Confraternização interna com comida típica, brincadeiras e integração."},
+  {d:"2026-09-07",n:"Independência do Brasil",c:"f",desc:"Feriado nacional. Comunicação com orgulho e pertencimento."},
+  {d:"2026-09-15",n:"Dia do Cliente",c:"v",desc:"Campanha interna de cultura de atendimento e foco no cliente."},
+  {d:"2026-09-21",n:"Dia da Árvore",c:"i",desc:"Ação de ESG e sustentabilidade: plantio, reciclagem."},
+  {d:"2026-10-12",n:"N. Sra. Aparecida",c:"f",desc:"Feriado nacional."},
+  {d:"2026-10-31",n:"Halloween",c:"i",desc:"Ação descontraída com fantasia e integração entre equipes."},
+  {d:"2026-11-02",n:"Finados",c:"f",desc:"Feriado nacional."},
+  {d:"2026-11-15",n:"Proclamação da República",c:"f",desc:"Feriado nacional."},
+  {d:"2026-11-20",n:"Consciência Negra",c:"f",desc:"Feriado nacional. Ação de diversidade e inclusão com palestras."},
+  {d:"2026-11-27",n:"Black Friday",c:"v",desc:"Campanha de vendas e benefícios internos para colaboradores."},
+  {d:"2026-12-01",n:"Campanha de Natal",c:"i",desc:"Lançar campanha natalina: amigo secreto, decoração, comunicados."},
+  {d:"2026-12-24",n:"Véspera de Natal",c:"f",desc:"Mensagem de gratidão da liderança para toda a equipe."},
+  {d:"2026-12-25",n:"Natal",c:"f",desc:"Feriado nacional. Mensagem especial de fim de ano."},
+  {d:"2026-12-31",n:"Réveillon",c:"f",desc:"Encerramento do ano com balanço e expectativa para 2027."},
 ];
 
 const CAT={f:{l:"Feriado",cls:"c-f",bc:"#f08080",tc:"rgba(220,60,60,.2)"},c:{l:"Comemorativo",cls:"c-c",bc:"#60d9a0",tc:"rgba(80,200,140,.18)"},i:{l:"Ação Interna",cls:"c-i",bc:"#f4a068",tc:"rgba(244,108,26,.18)"},v:{l:"Vendas",cls:"c-v",bc:"#7ab0ff",tc:"rgba(90,150,255,.18)"}};
@@ -335,86 +335,86 @@ function diff(ds){const n=new Date();n.setHours(0,0,0,0);return Math.round((new 
 
 // Clock
 function tick(){
-  const n=new Date();
-  document.getElementById("clock").textContent=`${pad(n.getHours())}:${pad(n.getMinutes())}:${pad(n.getSeconds())}`;
-  document.getElementById("cdate").textContent=n.toLocaleDateString("pt-BR",{weekday:"long",day:"2-digit",month:"long",year:"numeric"});
+  const n=new Date();
+  document.getElementById("clock").textContent=`${pad(n.getHours())}:${pad(n.getMinutes())}:${pad(n.getSeconds())}`;
+  document.getElementById("cdate").textContent=n.toLocaleDateString("pt-BR",{weekday:"long",day:"2-digit",month:"long",year:"numeric"});
 }
 setInterval(tick,1000);tick();
 
 // Progress
 (function(){
-  const n=new Date(),s=new Date(n.getFullYear(),0,1),e=new Date(n.getFullYear()+1,0,1);
-  const p=Math.round(((n-s)/(e-s))*100);
-  document.getElementById("ypbar").style.width=p+"%";
-  document.getElementById("yppct").textContent=p+"%";
-  document.getElementById("yplabel").textContent=n.getFullYear();
+  const n=new Date(),s=new Date(n.getFullYear(),0,1),e=new Date(n.getFullYear()+1,0,1);
+  const p=Math.round(((n-s)/(e-s))*100);
+  document.getElementById("ypbar").style.width=p+"%";
+  document.getElementById("yppct").textContent=p+"%";
+  document.getElementById("yplabel").textContent=n.getFullYear();
 })();
 
 // Render calendar
 function render(){
-  document.getElementById("mlabel").innerHTML=`${MONTHS[vm]} <em>${vy}</em>`;
-  const g=document.getElementById("grid"); g.innerHTML="";
-  const fd=new Date(vy,vm,1).getDay(), dim=new Date(vy,vm+1,0).getDate(), dip=new Date(vy,vm,0).getDate();
-  for(let i=fd-1;i>=0;i--) g.appendChild(cell(dip-i,vy,vm-1,true));
-  for(let d=1;d<=dim;d++) g.appendChild(cell(d,vy,vm,false));
-  const tot=fd+dim, rem=tot%7?7-tot%7:0;
-  for(let d=1;d<=rem;d++) g.appendChild(cell(d,vy,vm+1,true));
-  renderSidebar();
+  document.getElementById("mlabel").innerHTML=`${MONTHS[vm]} <em>${vy}</em>`;
+  const g=document.getElementById("grid"); g.innerHTML="";
+  const fd=new Date(vy,vm,1).getDay(), dim=new Date(vy,vm+1,0).getDate(), dip=new Date(vy,vm,0).getDate();
+  for(let i=fd-1;i>=0;i--) g.appendChild(cell(dip-i,vy,vm-1,true));
+  for(let d=1;d<=dim;d++) g.appendChild(cell(d,vy,vm,false));
+  const tot=fd+dim, rem=tot%7?7-tot%7:0;
+  for(let d=1;d<=rem;d++) g.appendChild(cell(d,vy,vm+1,true));
+  renderSidebar();
 }
 
 function cell(d,y,m,other){
-  const ry=m<0?y-1:m>11?y+1:y, rm=((m%12)+12)%12;
-  const div=document.createElement("div"); div.className="day";
-  if(other) div.classList.add("other");
-  const dow=new Date(ry,rm,d).getDay();
-  if(dow===0||dow===6) div.classList.add("weekend-day");
-  const isTd=!other&&d===today.getDate()&&rm===today.getMonth()&&ry===today.getFullYear();
-  if(isTd) div.classList.add("today");
-  const evs=other?[]:evFor(ry,rm,d);
-  if(evs.length) div.classList.add("has-ev","clickable");
-  let html=`<div class="dn">${d}</div><div class="day-ev-list">`;
-  evs.forEach(e=>{html+=`<div class="ep ${CAT[e.c].cls}">${e.n}</div>`});
-  html+=`</div>`;
-  div.innerHTML=html;
-  if(evs.length) div.addEventListener("click",()=>openModal(evs[0]));
-  return div;
+  const ry=m<0?y-1:m>11?y+1:y, rm=((m%12)+12)%12;
+  const div=document.createElement("div"); div.className="day";
+  if(other) div.classList.add("other");
+  const dow=new Date(ry,rm,d).getDay();
+  if(dow===0||dow===6) div.classList.add("weekend-day");
+  const isTd=!other&&d===today.getDate()&&rm===today.getMonth()&&ry===today.getFullYear();
+  if(isTd) div.classList.add("today");
+  const evs=other?[]:evFor(ry,rm,d);
+  if(evs.length) div.classList.add("has-ev","clickable");
+  let html=`<div class="dn">${d}</div><div class="day-ev-list">`;
+  evs.forEach(e=>{html+=`<div class="ep ${CAT[e.c].cls}">${e.n}</div>`});
+  html+=`</div>`;
+  div.innerHTML=html;
+  if(evs.length) div.addEventListener("click",()=>openModal(evs[0]));
+  return div;
 }
 
 function renderSidebar(){
-  const list=document.getElementById("evlist"); list.innerHTML="";
-  const upcoming=EV.map(e=>({...e,df:diff(e.d)})).filter(e=>e.df>=0).sort((a,b)=>a.df-b.df).slice(0,9);
-  upcoming.forEach((e,i)=>{
-    const dt=new Date(e.d+"T00:00:00");
-    const cd=e.df===0?"Hoje":e.df===1?"Amanhã":`em ${e.df} dias`;
-    const el=document.createElement("div"); el.className="ev-card"+(i===0?" top":"");
-    el.innerHTML=`<div class="ev-date"><div class="ev-day">${pad(dt.getDate())}</div><div class="ev-mon">${MONTHS[dt.getMonth()].slice(0,3)}</div></div><div class="ev-body"><div class="ev-name">${e.n}</div><span class="ev-badge" style="background:${CAT[e.c].tc};color:${CAT[e.c].bc}">${CAT[e.c].l}</span><div class="ev-cd">${cd}</div></div>`;
-    el.addEventListener("click",()=>openModal(e));
-    list.appendChild(el);
-  });
+  const list=document.getElementById("evlist"); list.innerHTML="";
+  const upcoming=EV.map(e=>({...e,df:diff(e.d)})).filter(e=>e.df>=0).sort((a,b)=>a.df-b.df).slice(0,9);
+  upcoming.forEach((e,i)=>{
+    const dt=new Date(e.d+"T00:00:00");
+    const cd=e.df===0?"Hoje":e.df===1?"Amanhã":`em ${e.df} dias`;
+    const el=document.createElement("div"); el.className="ev-card"+(i===0?" top":"");
+    el.innerHTML=`<div class="ev-date"><div class="ev-day">${pad(dt.getDate())}</div><div class="ev-mon">${MONTHS[dt.getMonth()].slice(0,3)}</div></div><div class="ev-body"><div class="ev-name">${e.n}</div><span class="ev-badge" style="background:${CAT[e.c].tc};color:${CAT[e.c].bc}">${CAT[e.c].l}</span><div class="ev-cd">${cd}</div></div>`;
+    el.addEventListener("click",()=>openModal(e));
+    list.appendChild(el);
+  });
 }
 
 // Ticker
 (function(){
-  const upcoming=EV.map(e=>({...e,df:diff(e.d)})).filter(e=>e.df>=0&&e.df<=90).sort((a,b)=>a.df-b.df).slice(0,14);
-  const tk=document.getElementById("tkitems");
-  const items=[...upcoming,...upcoming].map(e=>{
-    const cd=e.df===0?"Hoje":e.df===1?"Amanhã":`${e.df} dias`;
-    return `<span class="tk-item"><b>${e.n}</b><span class="tk-sep">→</span>${cd}</span>`;
-  }).join('<span class="tk-item" style="color:#333;user-select:none">·</span>');
-  tk.innerHTML=items;
+  const upcoming=EV.map(e=>({...e,df:diff(e.d)})).filter(e=>e.df>=0&&e.df<=90).sort((a,b)=>a.df-b.df).slice(0,14);
+  const tk=document.getElementById("tkitems");
+  const items=[...upcoming,...upcoming].map(e=>{
+    const cd=e.df===0?"Hoje":e.df===1?"Amanhã":`${e.df} dias`;
+    return `<span class="tk-item"><b>${e.n}</b><span class="tk-sep">→</span>${cd}</span>`;
+  }).join('<span class="tk-item" style="color:#333;user-select:none">·</span>');
+  tk.innerHTML=items;
 })();
 
 // Modal
 function openModal(e){
-  const dt=new Date(e.d+"T00:00:00");
-  const tag=document.getElementById("mtag");
-  tag.textContent=CAT[e.c].l;
-  tag.style.background=CAT[e.c].tc;
-  tag.style.color=CAT[e.c].bc;
-  document.getElementById("mtitle").textContent=e.n;
-  document.getElementById("mdate").textContent=dt.toLocaleDateString("pt-BR",{weekday:"long",day:"2-digit",month:"long",year:"numeric"});
-  document.getElementById("mdesc").textContent=e.desc||"";
-  document.getElementById("overlay").classList.add("on");
+  const dt=new Date(e.d+"T00:00:00");
+  const tag=document.getElementById("mtag");
+  tag.textContent=CAT[e.c].l;
+  tag.style.background=CAT[e.c].tc;
+  tag.style.color=CAT[e.c].bc;
+  document.getElementById("mtitle").textContent=e.n;
+  document.getElementById("mdate").textContent=dt.toLocaleDateString("pt-BR",{weekday:"long",day:"2-digit",month:"long",year:"numeric"});
+  document.getElementById("mdesc").textContent=e.desc||"";
+  document.getElementById("overlay").classList.add("on");
 }
 document.getElementById("mclose").onclick=()=>document.getElementById("overlay").classList.remove("on");
 document.getElementById("overlay").onclick=function(ev){if(ev.target===this)this.classList.remove("on")};
