@@ -401,14 +401,46 @@ function openModal(e){
 document.getElementById("mclose").onclick=()=>document.getElementById("overlay").classList.remove("on");
 document.getElementById("overlay").onclick=function(ev){if(ev.target===this)this.classList.remove("on")};
 
-// Nav
-document.getElementById("prev").onclick=()=>{vm--;if(vm<0){vm=11;vy--;}render()};
-document.getElementById("next").onclick=()=>{vm++;if(vm>11){vm=0;vy++;}render()};
+// Nav - Travado em 2026
+document.getElementById("prev").onclick = () => {
+  if (vm > 0) {
+    vm--;
+    render();
+  } else {
+    // Se quiser dar um feedback visual que travou:
+    console.log("Limite de Janeiro de 2026 atingido.");
+  }
+};
 
-// Auto-advance
-let auto=true;
-setInterval(()=>{if(!auto)return;vm++;if(vm>11){vm=0;vy++;}render()},20000);
-["prev","next"].forEach(id=>document.getElementById(id).addEventListener("click",()=>{auto=false;setTimeout(()=>auto=true,60000)}));
+document.getElementById("next").onclick = () => {
+  if (vm < 11) {
+    vm++;
+    render();
+  } else {
+    console.log("Limite de Dezembro de 2026 atingido.");
+  }
+};
+
+// Auto-advance - Travado em 2026
+let auto = true;
+setInterval(() => {
+  if (!auto) return;
+  
+  if (vm < 11) {
+    vm++;
+  } else {
+    vm = 0; // Se chegar em Dezembro, volta para Janeiro (sem mudar o ano)
+  }
+  render();
+}, 20000);
+
+// Mantém a funcionalidade de pausar o auto-advance ao clicar
+["prev", "next"].forEach(id => 
+  document.getElementById(id).addEventListener("click", () => {
+    auto = false;
+    setTimeout(() => auto = true, 60000);
+  })
+);
 
 render();
 </script>
