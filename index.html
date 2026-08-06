@@ -3,37 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calendário Endomarketing · liveSEO · Rumo ao Hexa</title>
+<title>Calendário Endomarketing · liveSEO</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#0a0f0a;
-  --surface:#0e160e;
-  --card:#141e14;
-  --card2:#1a241a;
-  --green:#009c3b;
-  --yellow:#ffdf00;
-  --blue:#002776;
+  --bg:#0d0d0d;
+  --surface:#161616;
+  --card:#1e1e1e;
+  --card2:#252525;
   --orange:#f46c1a;
-  --green-dim:rgba(0,156,59,.15);
-  --green-glow:rgba(0,156,59,.08);
-  --yellow-dim:rgba(255,223,0,.12);
+  --orange-dim:rgba(244,108,26,.15);
+  --orange-glow:rgba(244,108,26,.08);
   --text:#f5f5f5;
-  --muted:#7a9a7a;
-  --muted2:#3a5a3a;
-  --border:rgba(0,156,59,.12);
-  --border-strong:rgba(0,156,59,.22);
-  --accent: var(--yellow);
+  --muted:#888;
+  --muted2:#555;
+  --border:rgba(255,255,255,.06);
+  --border-strong:rgba(255,255,255,.12);
 }
 html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif}
 
+/* ESTRUTURA LADO A LADO PROPORCIONAL */
 body{
   display:grid;
-  grid-template-columns: 1fr 25%;
+  grid-template-columns: 1fr 25%; /* Sidebar sempre ocupa 25% da largura */
   grid-template-rows: 72px 1fr 52px;
   height:100vh;
-  min-width: 1000px;
+  min-width: 1000px; /* Evita que o layout esmague demais em telas muito pequenas */
 }
 
 /* ─── TOPBAR ─── */
@@ -44,96 +40,56 @@ body{
   background:var(--surface);
   border-bottom:1px solid var(--border);
   position:relative;
-  overflow:hidden;
-}
-/* faixas bandeira no fundo do topbar */
-.topbar::before{
-  content:'';position:absolute;inset:0;
-  background: linear-gradient(180deg,
-    rgba(0,156,59,.06) 0%,
-    rgba(255,223,0,.04) 50%,
-    rgba(0,39,118,.07) 100%);
-  pointer-events:none;
 }
 .topbar::after{
   content:'';position:absolute;bottom:0;left:0;
-  width:100%;height:3px;
-  background:linear-gradient(90deg, var(--green), var(--yellow) 50%, var(--green));
+  width:100%;height:2px;
+  background:linear-gradient(90deg,var(--orange),transparent 60%);
 }
-.topbar-left{display:flex;align-items:center;gap:1.5vw;position:relative;z-index:1}
+.topbar-left{display:flex;align-items:center;gap:1.5vw}
 .logo-wrap{display:flex;align-items:center;gap:10px}
 .logo-icon{
-  width:32px;height:32px;background:var(--green);border-radius:6px;
+  width:32px;height:32px;background:var(--orange);border-radius:6px;
   display:flex;align-items:center;justify-content:center;
-  box-shadow:0 0 12px rgba(0,156,59,.5);
 }
 .logo-icon svg{width:18px;height:18px;fill:#fff}
 .logo-text{font-family:'Montserrat',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.5px}
-.logo-text span{color:var(--green)}
+.logo-text span{color:var(--orange)}
 .divider{width:1px;height:28px;background:var(--border-strong)}
 .cal-label{font-size:10px;font-weight:500;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase}
 
-/* hexa badge */
-.hexa-block{display:flex;align-items:center;gap:10px;position:relative;z-index:1}
-.hexa-trophy{font-size:22px;filter:drop-shadow(0 0 8px rgba(255,223,0,.6));animation:trophy-pulse 2s ease-in-out infinite}
-@keyframes trophy-pulse{0%,100%{filter:drop-shadow(0 0 8px rgba(255,223,0,.6))}50%{filter:drop-shadow(0 0 18px rgba(255,223,0,.9))}}
-.hexa-text{text-align:left}
-.hexa-title{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;color:var(--yellow);letter-spacing:1px;text-transform:uppercase;line-height:1}
-.hexa-sub{font-size:9px;color:var(--muted);letter-spacing:.5px;margin-top:1px}
-
-/* countdown */
-.countdown-wrap{display:flex;gap:6px;position:relative;z-index:1}
-.cd-unit{text-align:center;background:var(--card2);border:1px solid var(--border-strong);border-radius:7px;padding:4px 8px;min-width:42px}
-.cd-num{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:900;color:var(--yellow);line-height:1}
-.cd-label{font-size:7px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-top:1px}
-.cd-sep{font-size:18px;font-weight:900;color:var(--green);align-self:center;opacity:.7}
-
-.topbar-right{display:flex;align-items:center;gap:2vw;position:relative;z-index:1}
+.topbar-right{display:flex;align-items:center;gap:2vw}
 .live-badge{
   display:flex;align-items:center;gap:7px;
-  background:var(--green-dim);border:1px solid rgba(0,156,59,.35);
+  background:var(--orange-dim);border:1px solid rgba(244,108,26,.3);
   padding:5px 12px;border-radius:20px;
-  font-size:10px;font-weight:600;color:var(--green);
+  font-size:10px;font-weight:600;color:var(--orange);
   text-transform:uppercase;
 }
-.live-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:blink 1.4s ease infinite}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--orange);animation:blink 1.4s ease infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 .clock-block{text-align:right}
-.clock{font-family:'Montserrat',sans-serif;font-size:1.8rem;font-weight:800;letter-spacing:-1px;line-height:1;color:var(--yellow)}
+.clock{font-family:'Montserrat',sans-serif;font-size:1.8rem;font-weight:800;letter-spacing:-1px;line-height:1}
 .clock-date{font-size:10px;color:var(--muted);margin-top:1px;text-transform:capitalize}
 
 /* ─── MAIN ─── */
-.main{padding:2vh 2vw;display:flex;flex-direction:column;min-height:0;overflow:hidden;position:relative}
+.main{padding:2vh 2vw;display:flex;flex-direction:column;min-height:0;overflow:hidden}
 
-/* campo de futebol sutil no fundo */
-.main::before{
-  content:'';position:absolute;inset:0;pointer-events:none;
-  background:
-    radial-gradient(ellipse 60% 40% at 50% 50%, rgba(0,100,30,.04) 0%, transparent 70%);
-}
-/* linha do meio do campo */
-.main::after{
-  content:'';position:absolute;
-  left:50%;top:12%;bottom:8%;width:1px;
-  background:linear-gradient(180deg, transparent, rgba(0,156,59,.07) 30%, rgba(0,156,59,.07) 70%, transparent);
-  pointer-events:none;
-}
-
-.month-nav{display:flex;align-items:center;gap:16px;margin-bottom:15px;position:relative;z-index:1}
+.month-nav{display:flex;align-items:center;gap:16px;margin-bottom:15px}
 .month-title{font-family:'Montserrat',sans-serif;font-size:1.6rem;font-weight:900;letter-spacing:-1px;text-transform:capitalize;flex:1}
-.month-title em{color:var(--yellow);font-style:normal;font-size:14px;font-weight:500;margin-left:10px;opacity:.8}
+.month-title em{color:var(--orange);font-style:normal;font-size:14px;font-weight:500;margin-left:10px;opacity:.8}
 .nav-btn{
   width:32px;height:32px;border-radius:7px;border:1px solid var(--border-strong);
   background:var(--card);color:var(--muted);cursor:pointer;
   display:flex;align-items:center;justify-content:center;transition:all .15s;
 }
-.nav-btn:hover{background:var(--green);color:#fff;border-color:var(--green);box-shadow:0 0 12px rgba(0,156,59,.4)}
+.nav-btn:hover{background:var(--orange);color:#fff;border-color:var(--orange)}
 
-.weekdays{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-bottom:5px;position:relative;z-index:1}
+.weekdays{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-bottom:5px}
 .wd{text-align:center;font-size:9px;font-weight:600;color:var(--muted2);padding:5px 0;letter-spacing:1px;text-transform:uppercase}
-.wd.weekend{color:var(--yellow);opacity:.7}
+.wd.weekend{color:var(--orange);opacity:.6}
 
-.days-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;flex:1;min-height:0;position:relative;z-index:1}
+.days-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;flex:1;min-height:0}
 
 .day{
   background:var(--card);border:1px solid var(--border);border-radius:8px;
@@ -141,78 +97,54 @@ body{
   transition:border-color .15s,transform .12s;
 }
 .day.other{opacity:.2}
-.day.weekend-day{background:#101910}
-.day.today{border-color:var(--yellow)!important;background:var(--yellow-dim)}
-.day.today::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),var(--yellow),var(--green));border-radius:8px 8px 0 0}
-.day.has-ev{border-color:rgba(0,156,59,.3)}
-.day:hover:not(.other){transform:scale(1.02);border-color:rgba(255,223,0,.5);z-index:2;box-shadow:0 4px 20px rgba(0,156,59,.15)}
+.day.weekend-day{background:#191919}
+.day.today{border-color:var(--orange)!important;background:var(--orange-glow)}
+.day.today::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--orange);border-radius:8px 8px 0 0}
+.day.has-ev{border-color:rgba(244,108,26,.25)}
+.day:hover:not(.other){transform:scale(1.02);border-color:rgba(244,108,26,.5);z-index:2}
 .day.clickable{cursor:pointer}
 
 .dn{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;line-height:1}
 .day-ev-list{margin-top:4px;display:flex;flex-direction:column;gap:2px}
 .ep{font-size:8px;padding:2px 4px;border-radius:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600}
 .c-f{background:rgba(220,60,60,.2);color:#f08080}
-.c-c{background:rgba(255,223,0,.15);color:#c8ae00}
-.c-i{background:rgba(0,156,59,.2);color:#4ade80}
-.c-v{background:rgba(0,39,118,.35);color:#7ab0ff}
+.c-c{background:rgba(80,200,140,.18);color:#60d9a0}
+.c-i{background:rgba(244,108,26,.18);color:#f4a068}
+.c-v{background:rgba(90,150,255,.18);color:#7ab0ff}
 
 /* ─── SIDEBAR ─── */
 .sidebar{
   background:var(--surface);border-left:1px solid var(--border);
   display:flex;flex-direction:column;overflow:hidden;
-  position:relative;
-}
-/* faixa de campo na sidebar */
-.sidebar::before{
-  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
-  background:linear-gradient(180deg, var(--green), var(--yellow) 50%, var(--green));
-  pointer-events:none;
 }
 .sb-sec{padding:15px;border-bottom:1px solid var(--border)}
 .sb-title{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted2);margin-bottom:10px}
 
-/* copa score */
-.copa-banner{
-  background:linear-gradient(135deg, var(--green) 0%, #006428 100%);
-  border:1px solid rgba(255,223,0,.3);
-  border-radius:10px;padding:12px;margin-bottom:6px;text-align:center;
-  position:relative;overflow:hidden;
-}
-.copa-banner::after{
-  content:'⬟';position:absolute;right:-8px;top:-8px;
-  font-size:60px;opacity:.06;color:var(--yellow);transform:rotate(15deg);
-}
-.copa-banner-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,223,0,.7);margin-bottom:4px}
-.copa-banner-name{font-family:'Montserrat',sans-serif;font-size:18px;font-weight:900;color:var(--yellow);letter-spacing:-0.5px}
-.copa-banner-sub{font-size:9px;color:rgba(255,255,255,.5);margin-top:2px}
-.copa-flags{display:flex;justify-content:center;gap:6px;margin-top:8px}
-.flag-bit{font-size:20px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.4))}
-
 .yp-row{display:flex;justify-content:space-between;font-size:10px;margin-bottom:6px}
-.yp-row span:last-child{color:var(--yellow);font-weight:700;font-family:'Montserrat',sans-serif}
+.yp-row span:last-child{color:var(--orange);font-weight:700;font-family:'Montserrat',sans-serif}
 .bar-bg{height:3px;background:rgba(255,255,255,.06);border-radius:2px}
-.bar-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--yellow));border-radius:2px;transition:width 1s}
+.bar-fill{height:100%;background:var(--orange);border-radius:2px;transition:width 1s}
 
 .ev-scroll{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:6px;padding-right:2px}
 .ev-scroll::-webkit-scrollbar{width:2px}
-.ev-scroll::-webkit-scrollbar-thumb{background:var(--green-dim)}
+.ev-scroll::-webkit-scrollbar-thumb{background:var(--orange-dim)}
 .ev-card{
   display:flex;gap:8px;padding:8px;
   background:var(--card);border:1px solid var(--border);border-radius:8px;
   cursor:pointer;transition:border-color .15s;
 }
-.ev-card:hover,.ev-card.top{border-color:rgba(255,223,0,.4)}
-.ev-card.top{background:var(--yellow-dim)}
+.ev-card:hover,.ev-card.top{border-color:rgba(244,108,26,.4)}
+.ev-card.top{background:var(--orange-glow)}
 .ev-date{
   min-width:32px;background:var(--card2);border-radius:6px;
   display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4px;
 }
-.ev-day{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:900;line-height:1;color:var(--yellow)}
+.ev-day{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:900;line-height:1;color:var(--orange)}
 .ev-mon{font-size:8px;color:var(--muted);text-transform:uppercase;font-weight:600}
 .ev-body{flex:1;min-width:0}
 .ev-name{font-size:11px;font-weight:600;line-height:1.2;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ev-badge{display:inline-block;font-size:7px;padding:1px 4px;border-radius:3px;font-weight:700;text-transform:uppercase}
-.ev-cd{font-size:9px;color:var(--green);font-weight:700;margin-top:2px}
+.ev-cd{font-size:9px;color:var(--orange);font-weight:700;margin-top:2px}
 
 .legend{display:flex;flex-direction:column;gap:6px}
 .li{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--muted)}
@@ -221,37 +153,29 @@ body{
 /* ─── TICKER ─── */
 .ticker{
   grid-column:1/-1;
-  background:#080f08;border-top:1px solid var(--border);
+  background:#111;border-top:1px solid var(--border);
   display:flex;align-items:center;gap:0;overflow:hidden;
 }
 .tk-label{
   flex-shrink:0;padding:0 18px;height:100%;
   display:flex;align-items:center;
-  background:linear-gradient(90deg, var(--green), #006428);
+  background:var(--orange);
   font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;
-  color:var(--yellow);letter-spacing:1.5px;text-transform:uppercase;gap:7px;
-  white-space:nowrap;
+  color:#fff;letter-spacing:1.5px;text-transform:uppercase;gap:7px;
 }
 .tk-track{overflow:hidden;flex:1;padding:0 16px}
 .tk-items{display:inline-flex;gap:50px;animation:scroll 35s linear infinite;white-space:nowrap}
 @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .tk-item{font-size:11px;color:var(--muted)}
-.tk-item b{color:var(--text)}
-.tk-ball{display:inline-block;margin:0 2px;font-size:10px}
 
 /* ─── MODAL ─── */
-.overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.85);align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.8);align-items:center;justify-content:center}
 .overlay.on{display:flex}
-.modal{
-  background:var(--card);border:1px solid var(--border-strong);border-radius:14px;padding:32px;max-width:400px;width:90%;position:relative;
-  box-shadow:0 20px 60px rgba(0,156,59,.15);
-}
-.modal::before{content:'';position:absolute;top:0;left:24px;right:24px;height:3px;background:linear-gradient(90deg,var(--green),var(--yellow),var(--green));border-radius:3px}
-.modal-close{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;transition:color .15s}
-.modal-close:hover{color:var(--yellow)}
-.modal-title{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:900;margin-bottom:5px;margin-top:10px}
+.modal{background:var(--card);border:1px solid var(--border-strong);border-radius:14px;padding:32px;max-width:400px;width:90%;position:relative}
+.modal::before{content:'';position:absolute;top:0;left:24px;right:24px;height:2px;background:var(--orange)}
+.modal-close{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer}
+.modal-title{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:900;margin-bottom:5px}
 .modal-desc{font-size:13px;line-height:1.6;color:#bbb}
-.modal-date-str{font-size:11px;color:var(--muted);margin-bottom:12px;text-transform:capitalize}
 </style>
 </head>
 <body>
@@ -264,27 +188,7 @@ body{
     </div>
     <div class="divider"></div>
     <div class="cal-label">Calendário Endomarketing</div>
-    <div class="divider"></div>
-    <div class="hexa-block">
-      <div class="hexa-trophy">🏆</div>
-      <div class="hexa-text">
-        <div class="hexa-title">Rumo ao Hexa</div>
-        <div class="hexa-sub">Brasil · Copa do Mundo 2026</div>
-      </div>
-    </div>
   </div>
-
-  <!-- COUNTDOWN COPA -->
-  <div class="countdown-wrap" id="countdown">
-    <div class="cd-unit"><div class="cd-num" id="cd-d">--</div><div class="cd-label">Dias</div></div>
-    <div class="cd-sep">:</div>
-    <div class="cd-unit"><div class="cd-num" id="cd-h">--</div><div class="cd-label">Horas</div></div>
-    <div class="cd-sep">:</div>
-    <div class="cd-unit"><div class="cd-num" id="cd-m">--</div><div class="cd-label">Min</div></div>
-    <div class="cd-sep">:</div>
-    <div class="cd-unit"><div class="cd-num" id="cd-s">--</div><div class="cd-label">Seg</div></div>
-  </div>
-
   <div class="topbar-right">
     <div class="live-badge"><div class="live-dot"></div>Ao Vivo</div>
     <div class="clock-block">
@@ -310,19 +214,6 @@ body{
 
 <aside class="sidebar">
   <div class="sb-sec">
-    <!-- Banner Copa -->
-    <div class="copa-banner">
-      <div class="copa-banner-label">⚽ Copa do Mundo 2026</div>
-      <div class="copa-banner-name">HEXA! 🇧🇷</div>
-      <div class="copa-banner-sub">USA · Canada · México · Jun–Jul 2026</div>
-      <div class="copa-flags">
-        <span class="flag-bit">🇧🇷</span>
-        <span class="flag-bit">⚽</span>
-        <span class="flag-bit">🏆</span>
-      </div>
-    </div>
-  </div>
-  <div class="sb-sec">
     <div class="sb-title">Progresso do Ano</div>
     <div class="yp-row">
       <span id="yplabel">2026</span>
@@ -338,8 +229,8 @@ body{
     <div class="sb-title">Categorias</div>
     <div class="legend">
       <div class="li"><div class="ld" style="background:#f08080"></div>Feriado Nacional</div>
-      <div class="li"><div class="ld" style="background:#c8ae00"></div>Data Comemorativa</div>
-      <div class="li"><div class="ld" style="background:#4ade80"></div>Ação Interna</div>
+      <div class="li"><div class="ld" style="background:#60d9a0"></div>Data Comemorativa</div>
+      <div class="li"><div class="ld" style="background:#f4a068"></div>Ação Interna</div>
       <div class="li"><div class="ld" style="background:#7ab0ff"></div>Campanha de Vendas</div>
     </div>
   </div>
@@ -347,7 +238,8 @@ body{
 
 <footer class="ticker">
   <div class="tk-label">
-    ⚽ Destaques
+    <svg width="12" height="12" fill="white" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+    Destaques
   </div>
   <div class="tk-track"><div class="tk-items" id="tkitems"></div></div>
 </footer>
@@ -355,15 +247,15 @@ body{
 <div class="overlay" id="overlay">
   <div class="modal">
     <button class="modal-close" id="mclose">&times;</button>
-    <div class="modal-tag" id="mtag" style="display:inline-block;border-radius:4px;padding:2px 8px;font-size:9px;font-weight:700;text-transform:uppercase;margin-bottom:4px"></div>
+    <div class="modal-tag" id="mtag"></div>
     <div class="modal-title" id="mtitle"></div>
-    <div class="modal-date-str" id="mdate"></div>
+    <div class="modal-date" id="mdate"></div>
+    <div class="modal-sep"></div>
     <div class="modal-desc" id="mdesc"></div>
   </div>
 </div>
 
 <script>
-//START
 const EV = [
   {d:"2026-03-27", n:"Talk - Earth News", c:"i", desc:""},
   {d:"2026-03-30", n:"Talk - Maria Clara", c:"i", desc:""},
@@ -389,50 +281,41 @@ const EV = [
   {d:"2026-04-17", n:"Desafio de Hidratação", c:"i", desc:""},
   {d:"2026-04-08", n:"[Abril em Movimento] Saúde Fisica", c:"i", desc:""},
   {d:"2026-04-07", n:"Quintou", c:"i", desc:""},
-  {d:"2026-05-21", n:"Batismo SEO 👩‍🚀 - CLEITOM SALVADOR", c:"i", desc:""},
   {d:"2026-05-06", n:"Batismo SEO 👩‍🚀 - ANA LUIZA PASQUALINO", c:"i", desc:""},
   {d:"2026-05-07", n:"Batismo SEO 👩‍🚀 - RAFAELA PEREIRA", c:"i", desc:""},
   {d:"2026-05-12", n:"Batismo SEO 👩‍🚀 - JOAQUIM VIEIRA", c:"i", desc:""},
   {d:"2026-05-13", n:"Batismo SEO 👩‍🚀 - ISAAC MAIA", c:"i", desc:""},
+  {d:"2026-05-14", n:"Apresentação dos Aspiras", c:"i", desc:""},
   {d:"2026-05-19", n:"Batismo SEO 👩‍🚀 - ALISON VELOZA", c:"i", desc:""},
-  {d:"2026-05-22", n:"[liveSEO Conecta] Conectadas", c:"i", desc:""},
-  {d:"2026-04-28", n:"Semana da Saúde - Arteterapia 🎨", c:"i", desc:""},
-  {d:"2026-04-29", n:"Semana da Saúde - Nutrição 🍽️", c:"i", desc:""},
-  {d:"2026-04-30", n:"Quintou - Dia do Trabalhador", c:"i", desc:""},
-  {d:"2026-06-11", n:"Clube do livro", c:"i", desc:""},
-  {d:"2026-06-13", n:"⚽ Brasil x Marrocos – 19h", c:"i", desc:""},
-  {d:"2026-06-16", n:"[liveSEO Conecta] CCM Luiz Zanchin", c:"i", desc:""},
   {d:"2026-05-19", n:"Batismo SEO 👩‍🚀 - BENJAMIM MARANHO", c:"i", desc:""},
+  {d:"2026-05-21", n:"Batismo SEO 👩‍🚀 - CLEITOM SALVADOR", c:"i", desc:""},
+  {d:"2026-05-22", n:"[liveSEO Conecta] Conectadas", c:"i", desc:""},
   {d:"2026-05-26", n:"Batismo SEO 👩‍🚀 - MAYELE MARCHI", c:"i", desc:""},
   {d:"2026-05-27", n:"Batismo SEO 👩‍🚀 - CAUÃ BRAGA", c:"i", desc:""},
   {d:"2026-05-28", n:"Batismo SEO 👩‍🚀 - PEDRO BOEING", c:"i", desc:""},
-  {d:"2026-05-14", n:"Apresentação dos Aspiras", c:"i", desc:""},
+  {d:"2026-04-28", n:"Semana da Saúde - Arteterapia 🎨", c:"i", desc:""},
+  {d:"2026-04-29", n:"Semana da Saúde - Nutrição 🍽️", c:"i", desc:""},
+  {d:"2026-04-30", n:"Quintou - Dia do Trabalhador", c:"i", desc:""},
+  {d:"2026-06-05", n:"[LS] Talk 👩‍🚀 Champions League", c:"i", desc:""},
+  {d:"2026-06-11", n:"Clube do livro", c:"i", desc:""},
   {d:"2026-06-11", n:"Apresentação dos Aspiras", c:"i", desc:""},
-  {d:"2026-07-09", n:"Apresentação dos Aspiras", c:"i", desc:""},
-  {d:"2026-08-13", n:"Apresentação dos Aspiras", c:"i", desc:""},
-  {d:"2026-09-17", n:"Apresentação dos Aspiras", c:"i", desc:""},
-  {d:"2026-10-22", n:"Apresentação dos Aspiras", c:"i", desc:""},
-  {d:"2026-11-12", n:"Apresentação dos Aspiras", c:"i", desc:""},
-  {d:"2026-08-07", n:"[liveSEO Conecta] Colégio Dr. Gastão Vidigal", c:"i", desc:""},
-  {d:"2026-06-19", n:"⚽ Brasil x Haiti – 21h30", c:"i", desc:""},
-  {d:"2026-06-24", n:"⚽ Escócia x Brasil – 19h", c:"i", desc:""},
-  {d:"2026-06-25", n:"Quintou - Sunset Beach Sports", c:"i", desc:""},
   {d:"2026-06-12", n:"Batismo SEO 👩‍🚀 - Eduardo Zanin", c:"i", desc:""},
+  {d:"2026-06-16", n:"[liveSEO Conecta] CCM Luiz Zanchin", c:"i", desc:""},
   {d:"2026-06-16", n:"Batismo SEO 👩‍🚀 - Giana Cardoso", c:"i", desc:""},
   {d:"2026-06-17", n:"Batismo SEO 👩‍🚀 - Pedro Alcantara", c:"i", desc:""},
   {d:"2026-06-18", n:"Batismo SEO 👩‍🚀 - Renan Molinari", c:"i", desc:""},
   {d:"2026-06-19", n:"Talk 👩‍🚀 Earth News Ep. 06", c:"i", desc:""},
-  {d:"2026-06-29", n:"Talk 👩‍🚀Cristopher", c:"i", desc:""}
+  {d:"2026-06-25", n:"Quintou - Sunset Beach Sports", c:"i", desc:""},
+  {d:"2026-06-29", n:"Talk 👩‍🚀Cristopher", c:"i", desc:""},
+  {d:"2026-07-09", n:"Apresentação dos Aspiras", c:"i", desc:""},
+  {d:"2026-08-07", n:"[liveSEO Conecta] Colégio Dr. Gastão Vidigal", c:"i", desc:""},
+  {d:"2026-08-13", n:"Apresentação dos Aspiras", c:"i", desc:""},
+  {d:"2026-09-17", n:"Apresentação dos Aspiras", c:"i", desc:""},
+  {d:"2026-10-22", n:"Apresentação dos Aspiras", c:"i", desc:""},
+  {d:"2026-11-12", n:"Apresentação dos Aspiras", c:"i", desc:""}
 ];
-//END
 
-const CAT={
-  f:{l:"Feriado",cls:"c-f",bc:"#f08080",tc:"rgba(220,60,60,.2)"},
-  c:{l:"Comemorativo",cls:"c-c",bc:"#c8ae00",tc:"rgba(255,223,0,.15)"},
-  i:{l:"Ação Interna",cls:"c-i",bc:"#4ade80",tc:"rgba(0,156,59,.2)"},
-  v:{l:"⚽ Copa 2026",cls:"c-v",bc:"#7ab0ff",tc:"rgba(0,39,118,.35)"}
-};
-
+const CAT={f:{l:"Feriado",cls:"c-f",bc:"#f08080",tc:"rgba(220,60,60,.2)"},c:{l:"Comemorativo",cls:"c-c",bc:"#60d9a0",tc:"rgba(80,200,140,.18)"},i:{l:"Ação Interna",cls:"c-i",bc:"#f4a068",tc:"rgba(244,108,26,.18)"},v:{l:"Vendas",cls:"c-v",bc:"#7ab0ff",tc:"rgba(90,150,255,.18)"}};
 const MONTHS=["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
 const today=new Date();
 let vy=today.getFullYear(), vm=today.getMonth();
@@ -442,32 +325,12 @@ function key(y,m,d){return `${y}-${pad(m+1)}-${pad(d)}`}
 function evFor(y,m,d){return EV.filter(e=>e.d===key(y,m,d))}
 function diff(ds){const n=new Date();n.setHours(0,0,0,0);return Math.round((new Date(ds+"T00:00:00")-n)/864e5)}
 
-// Relógio + countdown Copa
-// Copa 2026 começa em 11 de junho de 2026
-const COPA_START = new Date("2026-06-11T14:00:00-04:00"); // abertura em NY
-
 function tick(){
   const n=new Date();
   document.getElementById("clock").textContent=`${pad(n.getHours())}:${pad(n.getMinutes())}:${pad(n.getSeconds())}`;
   document.getElementById("cdate").textContent=n.toLocaleDateString("pt-BR",{weekday:"long",day:"2-digit",month:"long",year:"numeric"});
-
-  // countdown
-  const diff_ms = COPA_START - n;
-  if(diff_ms > 0){
-    const total_s = Math.floor(diff_ms / 1000);
-    const s = total_s % 60;
-    const m = Math.floor(total_s / 60) % 60;
-    const h = Math.floor(total_s / 3600) % 24;
-    const d = Math.floor(total_s / 86400);
-    document.getElementById("cd-d").textContent = d;
-    document.getElementById("cd-h").textContent = pad(h);
-    document.getElementById("cd-m").textContent = pad(m);
-    document.getElementById("cd-s").textContent = pad(s);
-  } else {
-    document.getElementById("countdown").innerHTML = '<div style="font-family:Montserrat,sans-serif;font-size:13px;font-weight:900;color:#ffdf00;letter-spacing:1px">🏆 COPA EM ANDAMENTO!</div>';
-  }
 }
-setInterval(tick,1000); tick();
+setInterval(tick,1000);tick();
 
 (function(){
   const n=new Date(),s=new Date(n.getFullYear(),0,1),e=new Date(n.getFullYear()+1,0,1);
@@ -498,11 +361,6 @@ function cell(d,y,m,other){
   if(isTd) div.classList.add("today");
   const evs=other?[]:evFor(ry,rm,d);
   if(evs.length) div.classList.add("has-ev","clickable");
-
-  // dia de jogo do brasil → borda verde especial
-  const hasCopa = evs.some(e=>e.c==="v");
-  if(hasCopa) div.style.borderColor = "rgba(255,223,0,.5)";
-
   let html=`<div class="dn">${d}</div><div class="day-ev-list">`;
   evs.forEach(e=>{html+=`<div class="ep ${CAT[e.c].cls}">${e.n}</div>`});
   html+=`</div>`;
@@ -529,9 +387,8 @@ function renderSidebar(){
   const tk=document.getElementById("tkitems");
   const items=[...upcoming,...upcoming].map(e=>{
     const cd=e.df===0?"Hoje":e.df===1?"Amanhã":`${e.df} dias`;
-    const ball = e.c==="v"?"⚽ ":"";
-    return `<span class="tk-item">${ball}<b>${e.n}</b> → ${cd}</span>`;
-  }).join('<span class="tk-item" style="color:#1a3a1a;user-select:none"> 🇧🇷 </span>');
+    return `<span class="tk-item"><b>${e.n}</b><span class="tk-sep">→</span>${cd}</span>`;
+  }).join('<span class="tk-item" style="color:#333;user-select:none">·</span>');
   tk.innerHTML=items;
 })();
 
@@ -559,7 +416,7 @@ setInterval(() => {
   render();
 }, 20000);
 
-["prev", "next"].forEach(id =>
+["prev", "next"].forEach(id => 
   document.getElementById(id).addEventListener("click", () => {
     auto = false;
     setTimeout(() => auto = true, 60000);
