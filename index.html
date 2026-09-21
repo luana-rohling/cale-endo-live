@@ -112,6 +112,45 @@ body{
 .c-i{background:rgba(244,108,26,.18);color:#f4a068}
 .c-v{background:rgba(90,150,255,.18);color:#7ab0ff}
 
+/* ─── DESTAQUE DO DIA ─── */
+.today-hero{
+  flex-shrink:0;display:flex;align-items:stretch;gap:1.6vw;
+  margin-bottom:14px;padding:1.6vh 1.6vw;border-radius:12px;
+  background:linear-gradient(110deg,rgba(244,108,26,.28) 0%,rgba(244,108,26,.10) 55%,var(--card) 100%);
+  border:1px solid rgba(244,108,26,.55);
+  position:relative;overflow:hidden;
+  animation:heroGlow 3s ease-in-out infinite;
+}
+.today-hero[hidden]{display:none}
+.today-hero::before{
+  content:'';position:absolute;top:0;bottom:0;width:40%;left:-40%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);
+  animation:heroShine 6s ease-in-out infinite;
+}
+@keyframes heroGlow{0%,100%{box-shadow:0 0 0 rgba(244,108,26,0)}50%{box-shadow:0 0 28px rgba(244,108,26,.35)}}
+@keyframes heroShine{0%{left:-40%}60%,100%{left:120%}}
+.th-date{
+  flex-shrink:0;min-width:6.5vw;background:var(--orange);border-radius:10px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;padding:.8vh .8vw;
+}
+.th-label{font-family:'Montserrat',sans-serif;font-size:clamp(9px,.75vw,14px);font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#fff;opacity:.85}
+.th-day{font-family:'Montserrat',sans-serif;font-size:clamp(28px,3.4vw,64px);font-weight:900;line-height:1;color:#fff}
+.th-mon{font-family:'Montserrat',sans-serif;font-size:clamp(10px,.85vw,16px);font-weight:700;text-transform:uppercase;color:#fff;opacity:.9}
+.th-body{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:.8vh;position:relative}
+.th-kicker{display:flex;align-items:center;gap:8px;font-size:clamp(10px,.8vw,15px);font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange)}
+.th-events{display:flex;flex-direction:column;gap:.5vh}
+.th-ev{font-family:'Montserrat',sans-serif;font-weight:900;letter-spacing:-.5px;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.th-events.n1 .th-ev{font-size:clamp(20px,2.6vw,52px)}
+.th-events.n2 .th-ev{font-size:clamp(16px,1.9vw,38px)}
+.th-events.n3 .th-ev{font-size:clamp(14px,1.5vw,30px)}
+.th-events.nx{flex-direction:row;flex-wrap:wrap;gap:.6vh 1.2vw}
+.th-events.nx .th-ev{font-size:clamp(12px,1.2vw,24px)}
+.th-ev::before{content:'';display:inline-block;width:.45em;height:.45em;border-radius:2px;background:var(--orange);margin-right:.45em;vertical-align:middle}
+
+/* dia de hoje com ação ganha mais peso no grid */
+.day.today.has-ev{background:rgba(244,108,26,.16);box-shadow:0 0 0 1px var(--orange),0 0 18px rgba(244,108,26,.35)}
+.day.today .dn{color:var(--orange)}
+
 /* ─── SIDEBAR ─── */
 .sidebar{
   background:var(--surface);border-left:1px solid var(--border);
@@ -199,6 +238,17 @@ body{
 </header>
 
 <main class="main">
+  <section class="today-hero" id="todayHero" hidden>
+    <div class="th-date">
+      <div class="th-label">Hoje</div>
+      <div class="th-day" id="thDay"></div>
+      <div class="th-mon" id="thMon"></div>
+    </div>
+    <div class="th-body">
+      <div class="th-kicker"><div class="live-dot"></div>Acontece hoje na liveSEO</div>
+      <div class="th-events" id="thEvents"></div>
+    </div>
+  </section>
   <div class="month-nav">
     <button class="nav-btn" id="prev">&#8592;</button>
     <div class="month-title" id="mlabel"></div>
@@ -326,13 +376,28 @@ const EV = [
 
 const CAT={f:{l:"Feriado",cls:"c-f",bc:"#f08080",tc:"rgba(220,60,60,.2)"},c:{l:"Comemorativo",cls:"c-c",bc:"#60d9a0",tc:"rgba(80,200,140,.18)"},i:{l:"Ação Interna",cls:"c-i",bc:"#f4a068",tc:"rgba(244,108,26,.18)"},v:{l:"Vendas",cls:"c-v",bc:"#7ab0ff",tc:"rgba(90,150,255,.18)"}};
 const MONTHS=["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
-const today=new Date();
+// ─── CONFIGURAÇÃO DE EXIBIÇÃO ───
+// Meses anteriores a esta data ficam OCULTOS na tela da TV.
+// O histórico continua completo no array EV acima (nada é apagado).
+const EXIBIR_A_PARTIR_DE = {ano:2026, mes:8}; // mes: 0 = janeiro ... 8 = setembro
+
+// Para testar o destaque de um dia específico: ?hoje=2026-09-17 no final da URL
+const HOJE_TESTE = new URLSearchParams(location.search).get("hoje");
+const today = HOJE_TESTE ? new Date(HOJE_TESTE+"T00:00:00") : new Date();
+
+function mIdx(y,m){return y*12+m}
+const MIN_IDX = mIdx(EXIBIR_A_PARTIR_DE.ano, EXIBIR_A_PARTIR_DE.mes);
+function visivel(ds){const [y,m]=ds.split("-").map(Number);return mIdx(y,m-1)>=MIN_IDX}
+const EVV = EV.filter(e=>visivel(e.d)); // eventos exibidos (EV segue intacto)
+
 let vy=today.getFullYear(), vm=today.getMonth();
+const FIRST_M = vy>EXIBIR_A_PARTIR_DE.ano ? 0 : EXIBIR_A_PARTIR_DE.mes; // primeiro mês navegável no ano
+if(vm<FIRST_M) vm=FIRST_M;
 
 function pad(n){return String(n).padStart(2,"0")}
 function key(y,m,d){return `${y}-${pad(m+1)}-${pad(d)}`}
-function evFor(y,m,d){return EV.filter(e=>e.d===key(y,m,d))}
-function diff(ds){const n=new Date();n.setHours(0,0,0,0);return Math.round((new Date(ds+"T00:00:00")-n)/864e5)}
+function evFor(y,m,d){return EVV.filter(e=>e.d===key(y,m,d))}
+function diff(ds){const n=new Date(today);n.setHours(0,0,0,0);return Math.round((new Date(ds+"T00:00:00")-n)/864e5)}
 
 function tick(){
   const n=new Date();
@@ -380,7 +445,7 @@ function cell(d,y,m,other){
 
 function renderSidebar(){
   const list=document.getElementById("evlist"); list.innerHTML="";
-  const upcoming=EV.map(e=>({...e,df:diff(e.d)})).filter(e=>e.df>=0).sort((a,b)=>a.df-b.df).slice(0,9);
+  const upcoming=EVV.map(e=>({...e,df:diff(e.d)})).filter(e=>e.df>=0).sort((a,b)=>a.df-b.df).slice(0,9);
   upcoming.forEach((e,i)=>{
     const dt=new Date(e.d+"T00:00:00");
     const cd=e.df===0?"Hoje":e.df===1?"Amanhã":`em ${e.df} dias`;
@@ -392,7 +457,7 @@ function renderSidebar(){
 }
 
 (function(){
-  const upcoming=EV.map(e=>({...e,df:diff(e.d)})).filter(e=>e.df>=0&&e.df<=90).sort((a,b)=>a.df-b.df).slice(0,14);
+  const upcoming=EVV.map(e=>({...e,df:diff(e.d)})).filter(e=>e.df>=0&&e.df<=90).sort((a,b)=>a.df-b.df).slice(0,14);
   const tk=document.getElementById("tkitems");
   const items=[...upcoming,...upcoming].map(e=>{
     const cd=e.df===0?"Hoje":e.df===1?"Amanhã":`${e.df} dias`;
@@ -415,13 +480,13 @@ function openModal(e){
 document.getElementById("mclose").onclick=()=>document.getElementById("overlay").classList.remove("on");
 document.getElementById("overlay").onclick=function(ev){if(ev.target===this)this.classList.remove("on")};
 
-document.getElementById("prev").onclick = () => { if (vm > 0) { vm--; render(); } };
+document.getElementById("prev").onclick = () => { if (vm > FIRST_M) { vm--; render(); } };
 document.getElementById("next").onclick = () => { if (vm < 11) { vm++; render(); } };
 
 let auto = true;
 setInterval(() => {
   if (!auto) return;
-  if (vm < 11) { vm++; } else { vm = 0; }
+  if (vm < 11) { vm++; } else { vm = FIRST_M; }
   render();
 }, 20000);
 
@@ -432,6 +497,34 @@ setInterval(() => {
   })
 );
 
+// ─── DESTAQUE DO DIA ───
+// Se houver ação hoje, mostra o banner; se não houver, a tela segue como antes.
+function renderHero(){
+  const evs=evFor(today.getFullYear(),today.getMonth(),today.getDate());
+  const hero=document.getElementById("todayHero");
+  if(!evs.length){hero.hidden=true;return}
+  document.getElementById("thDay").textContent=pad(today.getDate());
+  document.getElementById("thMon").textContent=MONTHS[today.getMonth()].slice(0,3);
+  const box=document.getElementById("thEvents");
+  box.className="th-events "+(evs.length===1?"n1":evs.length===2?"n2":evs.length===3?"n3":"nx");
+  box.innerHTML="";
+  evs.forEach(e=>{
+    const el=document.createElement("div");
+    el.className="th-ev";el.textContent=e.n;
+    el.style.cursor="pointer";el.onclick=()=>openModal(e);
+    box.appendChild(el);
+  });
+  hero.hidden=false;
+}
+
+// Recarrega a página logo após a meia-noite: atualiza o destaque do dia
+// e já traz eventos novos que a automação tenha incluído.
+if(!HOJE_TESTE){
+  const n=new Date(), t=new Date(n.getFullYear(),n.getMonth(),n.getDate()+1,0,0,10);
+  setTimeout(()=>location.reload(), t-n);
+}
+
+renderHero();
 render();
 </script>
 </body>
